@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2014 - 2015 Eaton
+Copyright (C) 2014 - 2017 Eaton
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -49,11 +49,9 @@ int main (int argc, char** argv)
         zstr_sendx (ag_server, "VERBOSE", NULL);
     zstr_sendx (ag_server, "CONNECT", ENDPOINT, NULL);
     zstr_sendx (ag_server, "CONFIG", PATH, NULL);
-    // TODO add constants from libftyproto!!
-    zstr_sendx (ag_server, "PRODUCER", "_ALERTS_SYS", NULL);
-    zstr_sendx (ag_server, "CONSUMER", "METRICS", ".*", NULL);
-    zstr_sendx (ag_server, "CONSUMER", "_METRICS_UNAVAILABLE", ".*", NULL);
-
+    zstr_sendx (ag_server, "PRODUCER", FTY_PROTO_STREAM_ALERTS_SYS, NULL);
+    zstr_sendx (ag_server, "CONSUMER", FTY_PROTO_STREAM_METRICS, ".*", NULL);
+    zstr_sendx (ag_server, "CONSUMER", FTY_PROTO_STREAM_METRICS_UNAVAILABLE, ".*", NULL);
 
     //  Accept and print any message back from server
     //  copy from src/malamute.c under MPL license

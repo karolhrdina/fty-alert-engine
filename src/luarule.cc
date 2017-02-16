@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2014 - 2015 Eaton
+Copyright (C) 2014 - 2017 Eaton
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -90,7 +90,7 @@ int LuaRule::evaluate (const MetricList &metricList, PureAlert &pureAlert)
     std::vector<double> values;
     for ( const auto &metric : _metrics ) {
         double value = metricList.find (metric);
-        if ( isnan (value) ) {
+        if ( std::isnan (value) ) {
             //zsys_debug1("Don't have everything for '%s' yet\n", _name.c_str());
             return RULE_RESULT_UNKNOWN;
         }
